@@ -32,4 +32,4 @@ jobs:
       file: concourse-servicenow-pipeline/ci/tasks/build.spring-music.yml
     - put: pcf
       params:
-        manifest: spring-music/manifest.yml
+        manifest: built-spring-music/manifest.yml
