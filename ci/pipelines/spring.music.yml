@@ -19,4 +19,4 @@ jobs:
     - get: concourse-servicenow-pipeline
       trigger: false
     - task: unit
-      file: concourse-servicenow-pipeline/ci/tasks/build.springmusic.yml
+      file: concourse-servicenow-pipeline/ci/tasks/build.spring-music.yml
