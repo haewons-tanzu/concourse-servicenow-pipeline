@@ -12,6 +12,9 @@ fly -t concourse unpause-pipeline -p spring-music-servicenow
 
 Test individual tasks:
 
-```fly -t concourse execute -c \
+```
+fly -t concourse execute -c  \
   ./ci/tasks/build.springmusic.yml \
-  --input spring-music=../spring-music```
+  --input spring-music=../spring-music \
+  --input concourse-servicenow-pipeline=.
+```

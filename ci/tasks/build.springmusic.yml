@@ -4,18 +4,12 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: heroku/gradle
-    tag: latest
+    repository: openjdk
+    tag: 7-jdk-alpine
 
 inputs:
 - name: spring-music
+- name: concourse-servicenow-pipeline
 
 run:
-  path: sh
-  args:
-  - -exc
-  - |
-    ls -la
-    ls -la ./spring-music
-    export TERM=${TERM:-dumb}
-    ./spring-music/gradlew build
+  path: ./concourse-servicenow-pipeline/ci/tasks/build.spring-music.sh
