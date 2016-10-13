@@ -1,20 +1,22 @@
 resources:
-  - name: spring-music
-    type: git
-    source:
-      uri: https://github.com/pivotalservices/spring-music
-      branch: master
+- name: spring-music
+  type: git
+  source:
+    uri: https://github.com/pivotalservices/spring-music
+    branch: master
 
-  - name: concourse-servicenow-pipeline
-    type: git
-    source:
-      uri: https://github.com/pivotalservices/concourse-servicenow-pipeline
-      branch: master
+- name: concourse-servicenow-pipeline
+  type: git
+  source:
+    uri: https://github.com/pivotalservices/concourse-servicenow-pipeline
+    branch: master
 
 jobs:
-  - name: test-spring-music
-    plan:
-      - get: spring-music
-      - get: concourse-servicenow-pipeline
-      - task: unit
-        file: concourse-servicenow-pipeline/ci/tasks/build.springmusic.yml
+- name: test-spring-music
+  plan:
+    - get: spring-music
+      trigger: false
+    - get: concourse-servicenow-pipeline
+      trigger: false
+    - task: unit
+      file: concourse-servicenow-pipeline/ci/tasks/build.springmusic.yml
