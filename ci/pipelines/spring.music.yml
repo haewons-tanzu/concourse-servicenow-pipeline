@@ -2,7 +2,7 @@ resources:
 - name: spring-music
   type: git
   source:
-    uri: https://github.com/pivotalservices/spring-music
+    uri: https://github.com/cloudfoundry-samples/spring-music
     branch: master
 
 - name: concourse-servicenow-pipeline
@@ -32,4 +32,4 @@ jobs:
       file: concourse-servicenow-pipeline/ci/tasks/build.spring-music.yml
     - put: pcf
       params:
-        path: spring-music-jar/spring-music.jar
+        manifest: spring-music/manifest.yml

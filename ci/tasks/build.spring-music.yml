@@ -11,7 +11,8 @@ inputs:
 - name: spring-music
 
 outputs:
-- name: spring-music-jar
+- name: built-spring-music
+  path: ./spring-music
 
 run:
   path: sh
@@ -21,4 +22,3 @@ run:
     export TERM=${TERM:-dumb}
     gradle -v
     gradle test build -p ./spring-music
-    cp ./spring-music/build/libs/spring-music.jar ./spring-music-jar
