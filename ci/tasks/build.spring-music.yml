@@ -5,11 +5,13 @@ image_resource:
   type: docker-image
   source:
     repository: pivotalservices/gradle
-    tag: 2.14
+    tag: "2.14"
 
 inputs:
 - name: spring-music
-- name: concourse-servicenow-pipeline
+
+outputs:
+- name: spring-music-jar
 
 run:
   path: sh
@@ -18,4 +20,5 @@ run:
   - |
     export TERM=${TERM:-dumb}
     gradle -v
-    cd ./spring-music && gradle build
+    gradle test build -p ./spring-music
+    cp ./spring-music/build/libs/spring-music.jar ./spring-music-jar

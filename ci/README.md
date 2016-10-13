@@ -14,7 +14,6 @@ Test individual tasks:
 
 ```
 fly -t concourse execute -c  \
-  ./ci/tasks/build.springmusic.yml \
-  --input spring-music=../spring-music \
-  --input concourse-servicenow-pipeline=.
+  ./ci/tasks/build.spring-music.yml \
+  --input spring-music=../spring-music
 ```

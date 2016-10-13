@@ -11,12 +11,25 @@ resources:
     uri: https://github.com/pivotalservices/concourse-servicenow-pipeline
     branch: master
 
+- name: pcf
+  type: cf
+  source:
+    api: {{pcf-api}}
+    organization: {{pcf-organization}}
+    username: {{deploy-username}}
+    password: {{deploy-password}}
+    skip_cert_check: true
+    space: {{pcf-space}}
+
 jobs:
-- name: test-spring-music
+- name: test
   plan:
     - get: spring-music
       trigger: false
     - get: concourse-servicenow-pipeline
       trigger: false
-    - task: unit
+    - task: unit-test
       file: concourse-servicenow-pipeline/ci/tasks/build.spring-music.yml
+    - put: pcf
+      params:
+        path: spring-music-jar/spring-music.jar
